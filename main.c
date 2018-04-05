@@ -1,95 +1,89 @@
 #include <stdio.h>
 #include <stdlib.h>
-/*se ingresan numeros  (ser distintos de 0), no se saben cuantos.
-se pide mostrar:
-    *cantidad de pares e impares
-    *porcetaje positivos y negativos
-    *maximo y minimo
-    *maximo numero par
-    *cantidad de numeros comprendidos entre 125 y 236*/
+//1er paso
+float dividir (float numeroUno , float numeroDos);
+int sumar (int numeroUno ,int numeroDos);
+int pedirNumeroPar ();
+int getEntero (char* mensaje, char* mensajeError, int minimo, int maximo);
 
+//2do paso
 int main()
 {
     int numero;
-    char respuesta = 's';
+    numero= sumar (3,3);
+    printf("La suma es: %d", numero);
 
-    int pares=0;
-    int impares=0;
-    int flagPar=0;
+    float numeroD;
+    numeroD= dividir (10 , 3);
+    printf(" La division: %f", numeroD);
 
-    int maximo , minimo;
-    int flag=0;
-    int maximoPar=0;
-
-    int positivos=0;
-    int negativos=0;
-    int contadorNumeros=0;
-    float porcentajePositivos;
-    float porcentajeNegativos;
-
-    int cantidad=0;
-
-
-   do
+    int sePudo;
+    sePudo= pedirNumeroPar();
+    if(sePudo==0)
     {
-        printf("\n\nIngrese un numero: ");
-        scanf("%d" ,&numero);
+        printf("ok");
+    }
+    else
+    {
+        printf("mal");
+    }
 
-        while(numero == 0)
-            {
-                printf("Error. Ingrese otro numero");
-                scanf("%d",&numero);
-            }
-
-        printf("\ndesea continuar? ");
-        respuesta = getche();
-
-        if(numero % 2 ==0)
-            {
-                pares++;
-            }
-        else
-            {
-                impares++;
-            }
-        if(numero>maximo || flag==0)
-            {
-                maximo=numero;
-            }
-        if(numero<minimo || flag==0)
-            {
-                minimo=numero;
-                flag=1;
-            }
-        if(numero > 0)
-            {
-                positivos++;
-            }
-        else
-            {
-                negativos++;
-            }
-        if(numero >= 125 && numero <=236)
-            {
-                cantidad++;
-            }
-
-
-    }while(respuesta != 'n');
-
-    contadorNumeros= positivos + negativos;
-    porcentajePositivos=(float) (positivos * 100 )/ contadorNumeros;
-    porcentajeNegativos= 100 - porcentajePositivos;
-
-    printf("\n\n Los numeros pares son: %d\n" , pares);
-    printf("\n\n Los numeros impares son: %d\n" , impares);
-    printf("\n\n El numero  mayor es: %d\n", maximo);
-    printf("\n\n El numero  menor es: %d\n", minimo);
-    //printf("\n\n El mayor numero par es: %d\n" , maximoPar);
-    printf("\n\n El porcentaje de numeros positivos es: %2.f\n", porcentajePositivos);
-    printf("\n\n El porcentaje de numeros negativos es: %2.f\n", porcentajeNegativos);
-    printf("\n\n La cantidad de numeros entre 125 y 236 es: %d\n", cantidad);
-
-
+    int numero2;
+    numero2=getEntero("Ingrese su edad", "Error, debe ser entre 1 y 199", 1, 199);
+    printf("El entero ingresado es: %d", numero2);
     return 0;
+
 }
+//3er paso
+
+//suma
+int sumar (int numeroUno ,int numeroDos)
+{
+   int resultado;
+
+   resultado= numeroUno+numeroDos;
+
+   return resultado;
+
+}
+//division
+float dividir (float numeroUno , float numeroDos)
+{
+    float resultado;
+    resultado= numeroUno/numeroDos;
+    return resultado;
+}
+//numero par
+int pedirNumeroPar()
+{
+    int resultado=-1;
+    int numero;
+    printf(" Ingrese numero par: ");
+    scanf("%d",&numero);
+    if(numero/2==0 || numero !=0)
+    {
+        resultado=0;
+    }
+    return resultado;
+//edad
+int getEntero (char* mensaje, char* mensajeError, int minimo, int maximo)
+{
+    int retorno=-1;
+    do {
+        printf("%s", mensaje);
+        scanf("%d",&retorno);
+        if(retorno<maximo && retorno>minimo)
+        {
+            break;
+        }
+        printf("%s", mensajeError);
+    }while (1==1);
+    return retorno;
+}
+
+}
+
+
+
+
+
