@@ -1,0 +1,7 @@
+#ifndef FUNCIONESVECTORES_H_INCLUDED
+#define FUNCIONESVECTORES_H_INCLUDED
+
+void ejemploCargaSecuencial(void);
+
+
+#endif // FUNCIONESVECTORES_H_INCLUDED
