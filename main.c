@@ -1,42 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define cantidad 5
 
-void cambiarEntero(int numero);
-void cambiarVector (int listadoDeNumeros[]);
-void cargarVectoreEnMenosUno (int listado[]);
+int contarPares (int[],int);
+int buscarChar (char[], int, char);
+
 int main()
 {
-    int edad=22;
-    int edades[3];
-    cambiarEntero(edad);
-    printf("%d\n", edad);
-    cambiarVector(edades);
-    printf("%d\n", edades[0]);
+    int vector[5]={5,2,9,6,4};
+    char letras[5]={'f','g','i','m','u'};
+    int indexLetra;
+    int cantidad;
 
+    cantidad=contarPares(vector,5);
+    indexLetra= buscarChar(letras, 5, 'a');
+    if(indexLetra==-1)
+    {
+        printf("no se encuentra el caracter\n");
+    }
+    else
+    {
+        printf("El caracter se encuentra en el array\n");
+    }
+    printf("index: %d\n",indexLetra);
+    printf("cantidad de pares: %d", cantidad);
     return 0;
 }
 
-void cargarVectoreEnMenosUno (int listado[])
+int buscarChar (char array[], int cantidad, char caracter)
 {
+    int index= -1;
     int i;
-    int tamanio;
-    //aca se saca el tamaño
-    int tamanioArray=sizeof(listado[cantidad]);
-    printf("%d", tamanioArray);
-    for(i=0;i<tamanio;i++)
+    for (i=0;i<cantidad;i++)
     {
-        listado[i]=-1;
+        if(array[i]==caracter)
+        {
+            index=i;
+            break;
+        }
     }
+    return index;
 }
 
-void cambiarVector (int listadoDeNumeros[])
+int contarPares (int array[],int cantidad)
 {
-    listadoDeNumeros[0]=666;
-}
-
-void cambiarEntero(int numero)
-{
-
-    numero=666;
+    int contadorPares=0;
+    int i;
+    for(i=0;i<cantidad;i++)
+    {
+       if(array[i]%2==0)
+       {
+           contadorPares++;
+       }
+    }
+    return contadorPares;
 }
